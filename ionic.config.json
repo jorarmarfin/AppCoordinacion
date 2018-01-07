@@ -1,0 +1,8 @@
+{
+  "name": "Coordinacion",
+  "app_id": "ae75cfad",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
