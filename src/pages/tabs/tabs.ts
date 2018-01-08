@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ActividadesPage } from '../actividades/actividades';
+import { EventosPage } from '../eventos/eventos';
 import { HermanosPage } from '../hermanos/hermanos';
 import { ReunionesPage } from '../reuniones/reuniones';
 
@@ -9,7 +9,7 @@ import { ReunionesPage } from '../reuniones/reuniones';
 })
 export class TabsPage {
 
-  tab1Root = ActividadesPage;
+  tab1Root = EventosPage;
   tab2Root = HermanosPage;
   tab3Root = ReunionesPage;
 

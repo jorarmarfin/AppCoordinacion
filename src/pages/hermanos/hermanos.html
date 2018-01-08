@@ -19,7 +19,7 @@
 	    <h2>{{item.title}}</h2>
 	    <p>{{item.field_telefonos}}</p>
 
-	    <button ion-button clear item-end>View</button>
+	    <button ion-button clear item-end (click)="DetalleHermano(item.nid)">Ver</button>
 	  </ion-item>
 	</ion-list>
 </ion-content>

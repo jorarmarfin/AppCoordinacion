@@ -5,12 +5,13 @@ import { HttpModule } from '@angular/http';
 
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ReunionesPage } from '../pages/reuniones/reuniones';
 import { HermanosPage } from '../pages/hermanos/hermanos';
-import { ActividadesPage } from '../pages/actividades/actividades';
+import { VerHermanoPage } from '../pages/ver-hermano/ver-hermano';
+import { EventosPage } from '../pages/eventos/eventos';
+/*Temas*/
+import { VerTemasPage } from '../pages/temas/ver-temas/ver-temas';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,12 +20,12 @@ import { AppServiceProvider } from '../providers/app-service/app-service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage,
     TabsPage,
-    ActividadesPage,
     ReunionesPage,
-    HermanosPage
+    HermanosPage,
+    VerHermanoPage,
+    EventosPage,
+    VerTemasPage
   ],
   imports: [
     BrowserModule,
@@ -34,12 +35,12 @@ import { AppServiceProvider } from '../providers/app-service/app-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage,
     TabsPage,
-    ActividadesPage,
     ReunionesPage,
-    HermanosPage
+    HermanosPage,
+    VerHermanoPage,
+    EventosPage,
+    VerTemasPage
   ],
   providers: [
     StatusBar,

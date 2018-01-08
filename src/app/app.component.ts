@@ -4,9 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-
+import { ReunionesPage } from '../pages/reuniones/reuniones';
+import { HermanosPage } from '../pages/hermanos/hermanos';
+import { EventosPage } from '../pages/eventos/eventos';
+/*Temas*/
+import { VerTemasPage } from '../pages/temas/ver-temas/ver-temas';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,15 +18,17 @@ export class MyApp {
 
   rootPage: any = TabsPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Eventos', component: EventosPage, icon: 'md-calendar' },
+      { title: 'Hermanos', component: HermanosPage, icon: "ios-contacts-outline" },
+      { title: 'Reuniones', component: ReunionesPage, icon: 'md-add' },
+      { title: 'Temas', component: VerTemasPage, icon: 'md-add' }
     ];
 
   }
