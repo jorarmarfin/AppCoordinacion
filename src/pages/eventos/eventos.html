@@ -10,5 +10,14 @@
 
 
 <ion-content padding>
+  <ion-card>
 
+    <ion-item *ngFor="let item of Eventos">
+      <h2>{{item.title}}</h2>
+      <p>{{item.field_fecha}}</p>
+      <ion-card-content [innerHtml]='item.field_contenido'>
+      </ion-card-content>
+      <button ion-button icon-left clear small (click)="openModal({charNum: item.nid})">Ver mas</button>
+    </ion-item>
+  </ion-card>
 </ion-content>

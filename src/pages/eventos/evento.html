@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Hermano
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item>
+    <h2>{{Evento.title}}</h2>
+    <p>{{Evento.field_fecha}}</p>
+  </ion-item>
+</ion-list>
+    <div class="contenido-largo" [innerHtml]='Evento.field_contenido'>
+    </div>
+</ion-content>

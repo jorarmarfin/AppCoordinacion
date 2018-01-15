@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ingresos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item item-start *ngFor="let item of Ingresos">
+	<h2>{{item.field_fecha}}</h2>
+	<h3 item-end>{{item.field_monto}}</h3>
+  </ion-item>
+</ion-list>
+	<ion-fab bottom right>
+		<button ion-fab mini [navPush]="addingPage"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>

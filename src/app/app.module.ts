@@ -6,12 +6,20 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ReunionesPage } from '../pages/reuniones/reuniones';
-import { HermanosPage } from '../pages/hermanos/hermanos';
-import { VerHermanoPage } from '../pages/ver-hermano/ver-hermano';
 import { EventosPage } from '../pages/eventos/eventos';
-/*Temas*/
-import { VerTemasPage } from '../pages/temas/ver-temas/ver-temas';
+import { HermanosPage } from '../pages/hermanos/hermanos';
+import { IngresosPage } from '../pages/ingresos/ingresos';
+import { MisaPage } from '../pages/misa/misa';
+import { MocionesPage } from '../pages/mociones/mociones';
+import { NotasPage } from '../pages/notas/notas';
+import { ReunionesPage } from '../pages/reuniones/reuniones';
+import { TemasPage } from '../pages/temas/temas';
+import { VerHermanoPage } from '../pages/ver-hermano/ver-hermano';
+import { AddIngresoPage } from '../pages/add-ingreso/add-ingreso';
+
+/*Ventanas Modal*/
+import { EventoPage } from '../pages/eventos/eventos';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,11 +29,17 @@ import { AppServiceProvider } from '../providers/app-service/app-service';
   declarations: [
     MyApp,
     TabsPage,
-    ReunionesPage,
-    HermanosPage,
     VerHermanoPage,
     EventosPage,
-    VerTemasPage
+    HermanosPage,
+    IngresosPage,
+    MisaPage,
+    MocionesPage,
+    NotasPage,
+    ReunionesPage,
+    TemasPage,
+    EventoPage,
+    AddIngresoPage
   ],
   imports: [
     BrowserModule,
@@ -36,11 +50,17 @@ import { AppServiceProvider } from '../providers/app-service/app-service';
   entryComponents: [
     MyApp,
     TabsPage,
-    ReunionesPage,
-    HermanosPage,
     VerHermanoPage,
     EventosPage,
-    VerTemasPage
+    HermanosPage,
+    IngresosPage,
+    MisaPage,
+    MocionesPage,
+    NotasPage,
+    ReunionesPage,
+    TemasPage,
+    EventoPage,
+    AddIngresoPage
   ],
   providers: [
     StatusBar,

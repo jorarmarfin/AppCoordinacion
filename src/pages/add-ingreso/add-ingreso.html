@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregar Ingreso</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+
+	  <ion-item>
+	    <ion-label stacked>Fecha</ion-label>
+	    <ion-input type="date" [(ngModel)]="data_form.fecha"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Monto</ion-label>
+	    <ion-input type="number" [(ngModel)]="data_form.monto"></ion-input>
+	  </ion-item>
+		<button ion-button block (click)="save()">Agregar</button>
+
+	</ion-list>
+</ion-content>
