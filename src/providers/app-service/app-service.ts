@@ -45,8 +45,9 @@ export class AppServiceProvider {
        headers.append('Authorization', 'Basic YWRtaW46MzIxNjU0OTg3');
        let options = new RequestOptions({ headers: headers, method: 'post' });
        let postParams = {
-          titulo: {value: 'tarea4'},
-          body: {value: 'cuerpo tarea 4'}
+          tipo: {value: 'ingresos'},
+          monto: {value: '20'},
+          body: {value: 'ingreso1'}
         }
       this.http.post(this.url_create_nodo, postParams, options).subscribe(response => {
         if(response['_body'] != '0'){
