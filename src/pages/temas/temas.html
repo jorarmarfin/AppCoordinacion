@@ -12,5 +12,16 @@
 
 
 <ion-content padding>
-
+  <ion-card>
+    <ion-item item-start *ngFor="let item of Lista">
+      <h2 (click)="presentActionSheet(item.nid)">{{item.title}}</h2>
+      <p>{{item.field_fecha}}</p>
+      <p>{{item.field_predicador}}</p>
+      <ion-card-content [innerHtml]='item.field_contenido'></ion-card-content>
+      <button item-end ion-button icon-left clear small (click)="openModal({charNum: item.nid})">Ver mas</button>
+    </ion-item>
+  </ion-card>
+	<ion-fab bottom right>
+		<button ion-fab mini [navPush]="addingPage"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
 </ion-content>

@@ -11,9 +11,11 @@ export class AppServiceProvider {
   url_temas_api:string = this.url_web+'/api/emanuel/temas.json';
   url_eventos_api:string = this.url_web+'/api/emanuel/eventos.json';
   url_ingresos_api:string = this.url_web+'/api/emanuel/ingresos.json';
+  url_misas_api:string = this.url_web+'/api/capilla/misas.json';
+  url_mociones_api:string = this.url_web+'/api/emanuel/mociones.json';
+  token_api: string = this.url_web+'/rest/session/token';
 
-  token_api: string = "http://mydrupal.test/rest/session/token";
-  url_create_nodo: string = "http://mydrupal.test/api/myapi";
+  url_gestion_nodo: string = "http://mydrupal.test/api/myapi";
   data: any;
 
   constructor(public http: Http) {
@@ -36,6 +38,12 @@ export class AppServiceProvider {
   getDataIngresos() {
       return this.http.get(this.url_ingresos_api).map(res => res.json());
   }
+  getDataMisas() {
+      return this.http.get(this.url_misas_api).map(res => res.json());
+  }
+  getDataMociones() {
+      return this.http.get(this.url_mociones_api).map(res => res.json());
+  }
   setDataIngreso(param){
     this.data = param;
      this.http.get(this.token_api).subscribe(data_token => {
@@ -49,7 +57,7 @@ export class AppServiceProvider {
           monto: {value: '20'},
           body: {value: 'ingreso1'}
         }
-      this.http.post(this.url_create_nodo, postParams, options).subscribe(response => {
+      this.http.post(this.url_gestion_nodo, postParams, options).subscribe(response => {
         if(response['_body'] != '0'){
           this.data.titulo = '';
           this.data.body = '';
