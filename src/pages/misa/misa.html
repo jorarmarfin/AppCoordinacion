@@ -11,5 +11,13 @@
 
 
 <ion-content padding>
-
+<ion-list>
+  <ion-item (click)="presentActionSheet(item.nid)" *ngFor="let item of Lista" item-start>
+	<h2 >{{item.field_fecha}}</h2>
+	<h3 item-end>{{item.field_padre}}</h3>
+  </ion-item>
+</ion-list>
+	<ion-fab bottom right>
+		<button ion-fab mini [navPush]="addingPage"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
 </ion-content>

@@ -11,6 +11,7 @@ export class AppServiceProvider {
   url_temas_api:string = this.url_web+'/api/emanuel/temas.json';
   url_eventos_api:string = this.url_web+'/api/emanuel/eventos.json';
   url_ingresos_api:string = this.url_web+'/api/emanuel/ingresos.json';
+  url_misas_api:string = this.url_web+'/api/capilla/misas.json';
   token_api: string = "http://coordinacion.sahost.com.pe/rest/session/token";
   data: any;
   url_correo_feedback: string = "http://tpca.drinux.com/wsdl/feedback";
@@ -34,6 +35,9 @@ export class AppServiceProvider {
   }
   getDataIngresos() {
       return this.http.get(this.url_ingresos_api).map(res => res.json());
+  }
+  getDataMisas() {
+      return this.http.get(this.url_misas_api).map(res => res.json());
   }
   setDataIngreso(param){
     this.data = param;
