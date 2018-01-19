@@ -14,7 +14,6 @@ export class AppServiceProvider {
   url_misas_api:string = this.url_web+'/api/capilla/misas.json';
   token_api: string = "http://coordinacion.sahost.com.pe/rest/session/token";
   data: any;
-  url_correo_feedback: string = "http://tpca.drinux.com/wsdl/feedback";
 
   constructor(public http: Http) {
   }
@@ -45,21 +44,21 @@ export class AppServiceProvider {
        var headers = new Headers();
        headers.append('Content-Type', 'application/hal+json' );
        headers.append('X-CSRF-Token', data_token['_body'] );
-       headers.append('Authorization', 'Basic YWRtaW46aG9sYXBlcnU=');
+       headers.append('Authorization', 'Basic YWRtaW46MzIxNjU0OTg3');
        let options = new RequestOptions({ headers: headers, method: 'post' });
        let postParams = {
-          monto: {value: this.data.monto},
-          fecha: {value: this.data.fecha}
+          tipo: {value: 'ingresos'},
+          monto: {value: '20'},
+          body: {value: 'ingreso1'}
         }
-      this.http.post(this.url_correo_feedback, postParams, options).subscribe(response => {
+      this.http.post(this.url_create_nodo, postParams, options).subscribe(response => {
         if(response['_body'] != '0'){
-          this.data.name = '';
-          this.data.mail = '';
-          this.data.consulta = '';
+          this.data.titulo = '';
+          this.data.body = '';
         }
       },
-      error_feedback => {
-          console.log(error_feedback);
+      error_myaip => {
+          console.log(error_myaip);
         });
       },
       error => {
