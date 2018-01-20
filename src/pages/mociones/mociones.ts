@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ActionSheetController } from 'ionic-angular';
 import { AppServiceProvider } from '../../providers/app-service/app-service';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-mociones',
