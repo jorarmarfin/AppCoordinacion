@@ -13,11 +13,13 @@ export class AppServiceProvider {
   url_ingresos_api:string = this.url_web+'/api/emanuel/ingresos.json';
   url_misas_api:string = this.url_web+'/api/capilla/misas.json';
   url_mociones_api:string = this.url_web+'/api/emanuel/mociones.json';
+
   token_api: string = this.url_web+'/rest/session/token';
+  autorizacion_api: string = 'Basic YWRtaW46cjJkMjNwb0x1aSQ=';
 
-  url_gestion_nodo: string = "http://mydrupal.test/api/myapi";
+  url_gestion_nodo: string = this.url_web+"/api/gestion";
   data: any;
-
+  resultado: any;
   constructor(public http: Http) {
   }
   getDataEventos() {
@@ -50,18 +52,19 @@ export class AppServiceProvider {
        var headers = new Headers();
        headers.append('Content-Type', 'application/hal+json' );
        headers.append('X-CSRF-Token', data_token['_body'] );
-       headers.append('Authorization', 'Basic YWRtaW46MzIxNjU0OTg3');
+       headers.append('Authorization', this.autorizacion_api);
        let options = new RequestOptions({ headers: headers, method: 'post' });
        let postParams = {
-          tipo: {value: 'ingresos'},
-          monto: {value: '20'},
-          body: {value: 'ingreso1'}
+          action: {value: this.data.action},
+          tipo: {value: this.data.tipo},
+          monto: {value: this.data.monto},
+          fecha: {value: this.data.fecha}
         }
       this.http.post(this.url_gestion_nodo, postParams, options).subscribe(response => {
-        if(response['_body'] != '0'){
-          this.data.titulo = '';
-          this.data.body = '';
-        }
+        //if(response['_body'] != '0'){
+          this.resultado = 'se guardo';
+          return this.resultado;
+        //}
       },
       error_myaip => {
           console.log(error_myaip);
@@ -72,7 +75,32 @@ export class AppServiceProvider {
       });
 
   }
-
+  deleteData(param){
+    this.data = param;
+     this.http.get(this.token_api).subscribe(data_token => {
+       var headers = new Headers();
+       headers.append('Content-Type', 'application/hal+json' );
+       headers.append('X-CSRF-Token', data_token['_body'] );
+       headers.append('Authorization', this.autorizacion_api);
+       let options = new RequestOptions({ headers: headers, method: 'post' });
+       let postParams = {
+          action: {value: this.data.action},
+          nid: {value: this.data.nid},
+        }
+      this.http.post(this.url_gestion_nodo, postParams, options).subscribe(response => {
+        if(response['_body'] != '0'){
+          this.data.field_monto = '';
+          this.data.field_fecha = '';
+        }
+      },
+      error_myaip => {
+          console.log(error_myaip);
+        });
+      },
+      error => {
+        console.log(error);
+      });
+  }
 
 
 }

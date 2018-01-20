@@ -12,7 +12,7 @@
 
 <ion-content padding>
 <ion-list>
-  <ion-item item-start *ngFor="let item of Ingresos">
+  <ion-item (click)="presentActionSheet(item.nid)" item-start *ngFor="let item of Ingresos">
 	<h2>{{item.field_fecha}}</h2>
 	<h3 item-end>{{item.field_monto}}</h3>
   </ion-item>
