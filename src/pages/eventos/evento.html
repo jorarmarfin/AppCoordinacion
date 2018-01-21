@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <ion-icon name="md-close" ></ion-icon>
+        <ion-icon name="md-close" class="btn-aspa" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -17,8 +17,8 @@
   <ion-item>
     <h2>{{Evento.title}}</h2>
     <p>{{Evento.field_fecha}}</p>
-  </ion-item>
-</ion-list>
     <div class="contenido-largo" [innerHtml]='Evento.field_contenido'>
     </div>
+  </ion-item>
+</ion-list>
 </ion-content>

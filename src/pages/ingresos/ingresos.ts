@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { AppServiceProvider } from '../../providers/app-service/app-service';
+import { AppResourceProvider } from '../../providers/app-resource/app-resource';
 import { AddIngresoPage } from '../add-ingreso/add-ingreso';
 
 
@@ -13,18 +14,23 @@ export class IngresosPage {
   Ingresos: any;
 	Ingreso: any= {action:'',nid:''};
 	addingPage = AddIngresoPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public AppService: AppServiceProvider, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public AppService: AppServiceProvider,  public AppResource:AppResourceProvider,
+    public actionSheetCtrl: ActionSheetController ) {
   }
 
   ionViewWillEnter() {
-    this.AppService.getDataIngresos().subscribe((data)=>{
-      this.Ingresos = data;
-    });
+    this.mostrar();
   }
-  mostrarIngresos(){
-  	this.AppService.getDataIngresos().subscribe((data)=>{
-      this.Ingresos = data;
+  mostrar(){
+    this.AppResource.presentLoading('Cargando...');
+    this.AppService.getDataService('/api/emanuel/ingresos.json').subscribe((data)=>{
+      if(data.length > 0) {
+        this.Ingresos = data;
+      }
     });
+    this.AppResource.loader.dismiss();
+
   }
   presentActionSheet(nid) {
     let actionSheet = this.actionSheetCtrl.create({
@@ -54,4 +60,5 @@ export class IngresosPage {
     });
     actionSheet.present();
   }
+
 }

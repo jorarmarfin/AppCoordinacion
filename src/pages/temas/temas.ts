@@ -17,7 +17,7 @@ export class TemasPage {
     this.mostrar();
   }
   mostrar(){
-  	this.AppService.getDataTemas().subscribe((data)=>{
+  	this.AppService.getDataService('/api/emanuel/temas.json').subscribe((data)=>{
       this.Lista = data;
     });
   }

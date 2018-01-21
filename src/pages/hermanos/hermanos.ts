@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppServiceProvider } from '../../providers/app-service/app-service';
+import { AppResourceProvider } from '../../providers/app-resource/app-resource';
 import { VerHermanoPage } from '../ver-hermano/ver-hermano';
 
 @IonicPage()
@@ -12,16 +13,14 @@ export class HermanosPage {
 	Hermanos: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  	public AppService: AppServiceProvider) {
-
-  }
-
-  ionViewDidLoad() {
+  	public AppService: AppServiceProvider,public AppResource: AppResourceProvider) {
 
   }
   ionViewDidEnter(){
-    this.AppService.getDataHermanos().subscribe((data)=>{
+    this.AppResource.presentLoading('Cargando...');
+    this.AppService.getDataService('/api/emanuel/hermanos.json').subscribe((data)=>{
       this.Hermanos = data;
+    this.AppResource.loader.dismiss();
     });
   }
   DetalleHermano(item){

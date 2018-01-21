@@ -16,7 +16,7 @@ export class MocionesPage {
     this.mostrar();
   }
   mostrar(){
-  	this.AppService.getDataMociones().subscribe((data)=>{
+  	this.AppService.getDataService('/api/emanuel/mociones.json').subscribe((data)=>{
       this.Lista = data;
     });
   }

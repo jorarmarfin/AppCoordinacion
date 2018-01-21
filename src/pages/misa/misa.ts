@@ -18,7 +18,7 @@ export class MisaPage {
     this.mostrar();
   }
   mostrar(){
-  	this.AppService.getDataMisas().subscribe((data)=>{
+  	this.AppService.getDataService('/api/capilla/misas.json').subscribe((data)=>{
       this.Lista = data;
     });
   }
