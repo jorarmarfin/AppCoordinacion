@@ -14,14 +14,17 @@ export class EventosPage {
   	public AppService: AppServiceProvider, public AppResource: AppResourceProvider,
     public modalCtrl: ModalController) {
   }
-  ionViewDidEnter(){
+  ionViewDidLoad(){
     this.AppResource.presentLoading('Cargando...');
+    this.mostrarEventos();
+    this.AppResource.loader.dismiss();
+  }
+  ionViewDidEnter(){
     this.mostrarEventos();
   }
   mostrarEventos(){
-  	this.AppService.getDataService('/api/emanuel/eventos.json').subscribe((data)=>{
+    this.AppService.getDataService('/api/emanuel/eventos.json').subscribe((data)=>{
       this.Eventos = data;
-      this.AppResource.loader.dismiss();
     });
   }
   openModal(characterNum) {

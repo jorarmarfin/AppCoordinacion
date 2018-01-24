@@ -15,7 +15,6 @@ import 'rxjs/add/operator/catch';
 })
 export class AddIngresoPage {
 	data_form:any = {action:'C',tipo:'ingreso',fecha: '', monto: ''};
-  loader:any;
   postParams:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,

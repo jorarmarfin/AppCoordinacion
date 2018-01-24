@@ -16,6 +16,7 @@ import { ReunionesPage } from '../pages/reuniones/reuniones';
 import { TemasPage } from '../pages/temas/temas';
 import { VerHermanoPage } from '../pages/ver-hermano/ver-hermano';
 import { AddIngresoPage } from '../pages/add-ingreso/add-ingreso';
+import { EditIngresoPage } from '../pages/edit-ingreso/edit-ingreso';
 
 /*Ventanas Modal*/
 import { EventoPage } from '../pages/eventos/eventos';
@@ -40,7 +41,8 @@ import { AppResourceProvider } from '../providers/app-resource/app-resource';
     ReunionesPage,
     TemasPage,
     EventoPage,
-    AddIngresoPage
+    AddIngresoPage,
+    EditIngresoPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { AppResourceProvider } from '../providers/app-resource/app-resource';
     ReunionesPage,
     TemasPage,
     EventoPage,
-    AddIngresoPage
+    AddIngresoPage,
+    EditIngresoPage
   ],
   providers: [
     StatusBar,

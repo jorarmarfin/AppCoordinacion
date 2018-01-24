@@ -19,7 +19,6 @@ export class VerHermanoPage {
     this.url = '/api/emanuel/id/'+this.idHermano+'/hermano.json';
   	this.AppService.getDataServiceById(this.url).subscribe((data)=>{
       this.Hermano = data[0];
-      console.log(data);
     });
   }
 }
