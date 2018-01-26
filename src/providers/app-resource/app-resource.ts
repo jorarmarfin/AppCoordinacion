@@ -1,4 +1,4 @@
-import { LoadingController,AlertController } from 'ionic-angular';
+import { LoadingController,AlertController,ModalController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -6,7 +6,8 @@ export class AppResourceProvider {
 	loader:any;
 	confirm:any;
   constructor(
-  	public loadingCtrl: LoadingController,public alertCtrl: AlertController
+  	public loadingCtrl: LoadingController,public alertCtrl: AlertController,
+    public modalCtrl: ModalController
   	) {
   }
   presentLoading(param){
@@ -34,7 +35,14 @@ export class AppResourceProvider {
     });
     this.confirm.present();
   }
-
+  openModal(page,characterNum) {
+    let modal = this.modalCtrl.create(page, characterNum);
+    modal.present();
+  }
+  openModalOnlyPage(page) {
+    let modal = this.modalCtrl.create(page);
+    modal.present();
+  }
 
 
 

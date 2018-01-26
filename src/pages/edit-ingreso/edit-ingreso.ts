@@ -16,7 +16,7 @@ import 'rxjs/add/operator/catch';
 export class EditIngresoPage {
 	nid:any;
 	url: string;
-	data_form:any = {action:'U',nid:'',tipo:'ingreso',fecha: '', monto: ''};
+	data_form:any = {action:'',nid:'',tipo:'ingreso',fecha: '', monto: ''};
 	postParams:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public AppResource: AppResourceProvider,public AppService: AppServiceProvider,
@@ -36,7 +36,7 @@ export class EditIngresoPage {
   save(){
     this.AppResource.presentLoading('Guardando...');
     this.postParams = {
-      action: {value: this.data_form.action},
+      action: {value: 'U'},
       nid: {value: this.data_form.nid},
       monto: {value: this.data_form.monto},
       fecha: {value: this.data_form.fecha}
@@ -44,6 +44,7 @@ export class EditIngresoPage {
     this.setData();
   }
   setData(){
+    console.log(this.postParams);
 	 this.http.get(this.AppService.token_api).subscribe(data_token => {
 	   var headers = new Headers();
 	   headers.append('Content-Type', 'application/hal+json' );

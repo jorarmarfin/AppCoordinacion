@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ViewController } from 'ionic-angular';
 import { AppServiceProvider } from '../../providers/app-service/app-service';
+import { AppResourceProvider } from '../../providers/app-resource/app-resource';
 
 
 @IonicPage()
@@ -10,7 +11,9 @@ import { AppServiceProvider } from '../../providers/app-service/app-service';
 })
 export class MisaPage {
 	Lista: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public AppService:AppServiceProvider, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public AppService:AppServiceProvider, public actionSheetCtrl: ActionSheetController,
+    public AppResource: AppResourceProvider) {
   	this.mostrar();
   }
 
@@ -21,6 +24,9 @@ export class MisaPage {
   	this.AppService.getDataService('/api/capilla/misas.json').subscribe((data)=>{
       this.Lista = data;
     });
+  }
+  openModal(){
+    this.AppResource.openModalOnlyPage(AddMisaPage);
   }
   presentActionSheet(nid) {
     let actionSheet = this.actionSheetCtrl.create({
@@ -44,5 +50,19 @@ export class MisaPage {
     });
     actionSheet.present();
   }
+}
 
+@Component({
+  templateUrl: 'add-misa.html',
+})
+export class AddMisaPage {
+  Evento: any={title:'',field_fecha:'',field_contenido:''};
+  url:string;
+  constructor(public navParams: NavParams, public viewCtrl: ViewController,
+    public AppService: AppServiceProvider) {
+    console.log('cargo add misa');
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

@@ -12,8 +12,8 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-item item-start *ngFor="let item of Lista">
+  <ion-card item-start *ngFor="let item of Lista">
+    <ion-item >
       <h2 (click)="presentActionSheet(item.nid)">{{item.title}}</h2>
       <p>{{item.field_fecha}}</p>
       <p>{{item.field_predicador}}</p>

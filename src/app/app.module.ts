@@ -20,6 +20,7 @@ import { EditIngresoPage } from '../pages/edit-ingreso/edit-ingreso';
 
 /*Ventanas Modal*/
 import { EventoPage } from '../pages/eventos/eventos';
+import { AddMisaPage } from '../pages/misa/misa';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -42,7 +43,9 @@ import { AppResourceProvider } from '../providers/app-resource/app-resource';
     TemasPage,
     EventoPage,
     AddIngresoPage,
-    EditIngresoPage
+    /*Ventanas Modal*/
+    EditIngresoPage,
+    AddMisaPage
   ],
   imports: [
     BrowserModule,
@@ -62,9 +65,11 @@ import { AppResourceProvider } from '../providers/app-resource/app-resource';
     NotasPage,
     ReunionesPage,
     TemasPage,
-    EventoPage,
     AddIngresoPage,
-    EditIngresoPage
+    EditIngresoPage,
+    /*Ventanas Modal*/
+    EditIngresoPage,
+    AddMisaPage
   ],
   providers: [
     StatusBar,
