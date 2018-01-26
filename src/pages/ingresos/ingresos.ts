@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 import { AppServiceProvider } from '../../providers/app-service/app-service';
 import { AppResourceProvider } from '../../providers/app-resource/app-resource';
 import { AddIngresoPage } from '../add-ingreso/add-ingreso';
+import { EditIngresoPage } from '../edit-ingreso/edit-ingreso';
 
 
 @IonicPage()
@@ -13,24 +14,27 @@ import { AddIngresoPage } from '../add-ingreso/add-ingreso';
 export class IngresosPage {
   Ingresos: any;
 	Ingreso: any= {action:'',nid:''};
-	addingPage = AddIngresoPage;
+  addingPage = AddIngresoPage;
+	editingPage = EditIngresoPage;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public AppService: AppServiceProvider,  public AppResource:AppResourceProvider,
     public actionSheetCtrl: ActionSheetController ) {
   }
 
+  ionViewDidLoad() {
+    this.AppResource.presentLoading('Cargando...');
+    this.mostrar();
+    this.AppResource.loader.dismiss();
+  }
   ionViewWillEnter() {
     this.mostrar();
   }
   mostrar(){
-    this.AppResource.presentLoading('Cargando...');
     this.AppService.getDataService('/api/emanuel/ingresos.json').subscribe((data)=>{
       if(data.length > 0) {
         this.Ingresos = data;
       }
     });
-    this.AppResource.loader.dismiss();
-
   }
   presentActionSheet(nid) {
     let actionSheet = this.actionSheetCtrl.create({
@@ -41,7 +45,7 @@ export class IngresosPage {
           icon: 'md-create',
           role: 'Editar',
           handler: () => {
-            console.log('Destructive clicked'+nid);
+            this.navCtrl.push(EditIngresoPage,{nid:nid});
           }
         },{
           text: 'Eliminar',
@@ -52,8 +56,7 @@ export class IngresosPage {
             this.Ingresos = this.Ingresos.filter(i =>{
               return i.nid != nid;
             });
-            this.AppService.deleteData(this.Ingreso)
-
+            this.AppService.deleteData(this.Ingreso);
           }
         }
       ]

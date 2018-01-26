@@ -16,9 +16,11 @@ import { ReunionesPage } from '../pages/reuniones/reuniones';
 import { TemasPage } from '../pages/temas/temas';
 import { VerHermanoPage } from '../pages/ver-hermano/ver-hermano';
 import { AddIngresoPage } from '../pages/add-ingreso/add-ingreso';
+import { EditIngresoPage } from '../pages/edit-ingreso/edit-ingreso';
 
 /*Ventanas Modal*/
 import { EventoPage } from '../pages/eventos/eventos';
+import { AddMisaPage } from '../pages/misa/misa';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -40,7 +42,10 @@ import { AppResourceProvider } from '../providers/app-resource/app-resource';
     ReunionesPage,
     TemasPage,
     EventoPage,
-    AddIngresoPage
+    AddIngresoPage,
+    /*Ventanas Modal*/
+    EditIngresoPage,
+    AddMisaPage
   ],
   imports: [
     BrowserModule,
@@ -60,8 +65,11 @@ import { AppResourceProvider } from '../providers/app-resource/app-resource';
     NotasPage,
     ReunionesPage,
     TemasPage,
-    EventoPage,
-    AddIngresoPage
+    AddIngresoPage,
+    EditIngresoPage,
+    /*Ventanas Modal*/
+    EditIngresoPage,
+    AddMisaPage
   ],
   providers: [
     StatusBar,
